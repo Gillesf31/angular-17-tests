@@ -1,1 +1,22 @@
-<ph-team-nx-welcome></ph-team-nx-welcome> <router-outlet></router-outlet>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Age</th>
+            <th>Weight</th>
+            <th>Height</th>
+            <th>Deficit / Surplus</th>
+            <th>Calories intake goal</th>
+        </tr>
+    </thead>
+@for (user of users(); track user.username) {
+    <tr>
+        <td> {{ user.username }} </td>
+        <td> {{ user.age }} </td>
+        <td> {{ user.weight }} </td>
+        <td> {{ user.height }} </td>
+        <td> {{ user.malusSurplusPercentage }} % </td>
+        <td> {{ user.caloriesIntake }} </td>
+    </tr>
+}
+</table>

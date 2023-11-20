@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import {Component, inject} from '@angular/core';
+import {UserService} from "./users/service/user.service";
+import {toSignal} from "@angular/core/rxjs-interop";
+import {CommonModule} from "@angular/common";
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [CommonModule],
   selector: 'ph-team-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'ph-team';
+  private readonly userService = inject(UserService);
+  public users = toSignal(this.userService.getUsersWithCalories());
 }
